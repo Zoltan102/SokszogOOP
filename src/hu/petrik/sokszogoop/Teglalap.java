@@ -16,17 +16,19 @@ public class Teglalap extends Sokszog {
         this.b = b;
     }
 
+    @Override
     public double getKerulet() {
         return (getA() + b) * 2;
     }
 
+    @Override
     public double getTerulet() {
         return getA() * b;
     }
 
     @Override
     public String toString() {
-        return String.format("Téglalap: a = %f b = %f - K = %f - T = %f",
-                getA(), b, getKerulet(), getTerulet());
+        return String.format("Téglalap: a = %f b = %f %s",
+                getA(), b, super.toString());
     }
 }

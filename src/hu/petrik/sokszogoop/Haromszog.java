@@ -4,6 +4,21 @@ public class Haromszog extends Sokszog {
     private double b;
     private double c;
 
+    public Haromszog() {
+        super(getVeletlen());
+        this.b = getVeletlen();
+        this.c = getVeletlen();
+        while (!isSzerkesztheto()) {
+            super.setA(getVeletlen());
+            this.b = getVeletlen();
+            this.c = getVeletlen();
+        }
+    }
+
+    private static double getVeletlen() {
+        return Math.random() * 10 + 5;
+    }
+
     public Haromszog(double a, double b, double c) {
         super(a);
         this.b = b;
@@ -47,6 +62,7 @@ public class Haromszog extends Sokszog {
         }
     }
 
+    @Override
     public double getKerulet() {
         return getA() + b + c;
     }
@@ -55,13 +71,14 @@ public class Haromszog extends Sokszog {
         return getKerulet() / 2;
     }
 
+    @Override
     public double getTerulet() {
         return Math.sqrt(getS() * (getS() - getA()) * (getS() - b) * (getS() - c));
     }
 
     @Override
     public String toString() {
-        return String.format("Háromszög: a = %f b = %f c = %f - K = %f - T = %f",
-                getA(), b, c, getKerulet(), getTerulet());
+        return String.format("Háromszög: a = %f b = %f c = %f %s",
+                getA(), b, c, super.toString());
     }
 }
